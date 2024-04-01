@@ -56,13 +56,13 @@ func TestFilterList(t *testing.T) {
 		params := utils.FilterListParams[common.Property]{Needle: "4", Haystack: propertyHaystack}
 		result := utils.FilterList[common.Property](params)
 
-		assert.Len(t, result, 0)
+		assert.Empty(t, result)
 	})
 
 	t.Run("filter is case sensitive", func(t *testing.T) {
 		params := utils.FilterListParams[common.Property]{Needle: strings.ToUpper("slug1"), Haystack: propertyHaystack}
 		result := utils.FilterList[common.Property](params)
 
-		assert.Len(t, result, 0)
+		assert.Empty(t, result)
 	})
 }

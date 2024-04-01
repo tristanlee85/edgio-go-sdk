@@ -247,7 +247,10 @@ func TestFilterList(t *testing.T) {
 		defer server.Close()
 
 		mux.HandleFunc(propertiesURL, func(rw http.ResponseWriter, _ *http.Request) {
-			rw.Write([]byte(listResult))
+			_, err := rw.Write([]byte(listResult))
+			if err != nil {
+				t.Fatal(err)
+			}
 		})
 
 		client, _ := property.NewClient(params)
@@ -266,13 +269,16 @@ func TestFilterList(t *testing.T) {
 		defer server.Close()
 
 		mux.HandleFunc(propertiesURL, func(rw http.ResponseWriter, _ *http.Request) {
-			rw.Write([]byte(listResult))
+			_, err := rw.Write([]byte(listResult))
+			if err != nil {
+				t.Fatal(err)
+			}
 		})
 
 		client, _ := property.NewClient(params)
 		result, err := client.FilterList(property.FilterParams{Slug: "another-slug"})
 
-		assert.NoError(t, err)
+		require.NoError(t, err)
 		assert.Equal(t, 2, result.Total)
 		assert.Equal(t, 1, result.FilteredTotal)
 		assert.Equal(t, "another-slug", result.Items[0].Slug)

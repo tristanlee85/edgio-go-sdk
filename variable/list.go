@@ -61,7 +61,8 @@ func (c ClientStruct) List(environmentID string) (ListResult, error) {
 // variable.FilterParams.EnvID
 // Optional params:
 // variable.FilterParams.Key
-// Returns a list of environment variables that contain the provided key, or all environment variables if no key is provided.
+// Returns a list of environment variables that contain the provided key,
+// or all environment variables if no key is provided.
 func (c ClientStruct) FilterList(params FilterParams) (common.FilteredListResultType[common.Variable], error) {
 	if params.EnvID == "" {
 		return common.FilteredListResultType[common.Variable]{}, errors.New("EnvID is required")
