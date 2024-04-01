@@ -31,3 +31,32 @@ result, err := utils.GetHttpJsonResult(httpClient, request, "some-access-token")
 There is no optional parameters for that function
 
 <p align="right"><em><a href="../../#utils">back to the main README</a></em></p>
+
+## `utils.FilterList[T utils.Filterable](params utils.FilterListParams[T]) []T`
+
+Filters the list of items (haystack) by the given needle. Returns a list of items that contain the needle in their name, key or slug, depending on the entity type (Property, Environment, Variable), or an empty list if no items match the needle.
+
+```go
+haystack := []common.Variable{
+  {Key: "nope"},
+  {Key: "not-this"},
+  {Key: "this-variable"},
+}
+
+filteredProperties := utils.FilterList[common.Variable](
+  utils.FilterListParams[common.Variable]{Needle: "this-variable", Haystack: haystack},
+)
+
+fmt.Println(filteredProperties) // [{ Key: "this-variable" }]
+```
+
+### `utils.FilterList` Mandatory Params
+
+- `utils.FilterListParams.Needle`: The string that should be used to filter the provided list
+- `utils.FilterListParams.Haystack`:  The list of items to be filtered byt the needle
+
+### `utils.FilterList` Optional Params
+
+This func has no optional params.
+
+<p align="right"><em><a href="../../#utils">back to the main README</a></em></p>
