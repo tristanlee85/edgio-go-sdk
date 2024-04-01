@@ -15,6 +15,13 @@ type FilterListParams[T Filterable] struct {
 	Haystack []T
 }
 
+// FilterList Filters the list of items by the given needle.
+// Mandatory params:
+// FilterListParams.Needle
+// FilterListParams.Haystack
+// Returns a list of items that contain the needle in their name, key or slug,
+// depending on the entity type (Property, Environment, Variable),
+// or an empty list if no items match the needle.
 func FilterList[T Filterable](params FilterListParams[T]) []T {
 	result := []T{}
 
