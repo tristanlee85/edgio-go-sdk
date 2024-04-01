@@ -174,7 +174,7 @@ This func returns a new client with the provided parameters, with an access toke
 
 This func lists properties for a given Edgio Organization. Edgio's list page size was defaulted to 100 for now, which is the highest value. The idea is to return all properties until actual pagination is implemented. Returns a list of properties for a given Organization or an error if anything goes wrong.
 
-#### `property.FilterList(params FilterParams) (common.FilteredListResultType[common.Property], error)`
+#### `property.FilterList(params property.FilterParams) (common.FilteredListResultType[common.Property], error)`
 
 Filters the list of properties for a given Org by the property slug, and returns a list of properties that contain the provided slug, or all properties if no slug is provided.
 
@@ -198,7 +198,7 @@ This func returns a new client with the provided parameters, with an access toke
 
 This func list environments for a given Edgio Property. Edgio's list page size was defaulted to 100 for now, which is the highest value. The idea is to return all environments until actual pagination is implemented. Returns a list of environments for a given Property or an error if anything goes wrong.
 
-#### `env.FilterList(params FilterParams) (common.FilteredListResultType[common.Env], error)`
+#### `env.FilterList(params env.FilterParams) (common.FilteredListResultType[common.Env], error)`
 
 Filters the list of environments for a given Property by the environment name, and returns a list of environments for a given Property that contain the provided name, or all environments if no name is provided.
 
@@ -222,7 +222,7 @@ This func returns a new client with the provided parameters, with an access toke
 
 This func list environment variables for a given Edgio Environment. Edgio's list page size was defaulted to 100 for now, which is the highest value. The idea is to return all environment variables until actual pagination is implemented. Returns a list of environment variables for a given Property or an error if anything goes wrong.
 
-#### `variable.FilterList(params FilterParams) (common.FilteredListResultType[common.Variable], error)`
+#### `variable.FilterList(params variable.FilterParams) (common.FilteredListResultType[common.Variable], error)`
 
 This func filters the list of environment variables for a given Environment by the variable key, and returns a list of environment variables that contain the provided key, or all environment variables if no key is provided.
 

@@ -57,7 +57,7 @@ client, err := variable.NewClient(variable.ClientParams{
 variables, err := client.List("some-environment-id") // [{ "ID": "string", "Key": "string", "Value": "string", "Secret": true, "CreatedAt": "2019-08-24T14:15:22Z", "UpdatedAt": "2019-08-24T14:15:22Z" }]
 ```
 
-This func list environment variables for a given Edgio Environment. Edgio's list page size was defaulted to 100 for now, which is the highest value. The idea is to return all environment variables until actual pagination is implemented. Returns a list of environment variables for a given Property or an error if anything goes wrong.
+This func list environment variables for a given Edgio Environment. Edgio's list page size was defaulted to 100 for now, which is the highest value. The idea is to return all environment variables until actual pagination is implemented. Returns a list of environment variables for a given Environment or an error if anything goes wrong.
 
 ### `variable.List` Mandatory Params
 
@@ -67,4 +67,26 @@ This func list environment variables for a given Edgio Environment. Edgio's list
 
 There is no optional parameters for that function
 
-<p align="right"><em><a href="../#edgio-organizations-api">back to the main README</a></em></p>
+## `variable.FilterList(params variable.FilterParams) (common.FilteredListResultType[common.Property], error)`
+
+```go
+params := common.ClientParams{
+  Credentials: common.Creds{ ... },
+  Config: common.ClientConfig{OrgID: "some-org-id"},
+}
+
+client, _ := variable.NewClient(params)
+List, _ := client.FilterList(variable.FilterParams{ Key: "some-Key" }) // [{ "ID": "string", "Key": "some-key", "Value": "some-value", "Secret": true, "CreatedAt": "2019-08-24T14:15:22Z", "UpdatedAt": "2019-08-24T14:15:22Z" }]
+```
+
+This func filters the list of environment variables for a given Environment by the variable key, and returns a list of environment variables that contain the provided key, or all environment variables if no key is provided.
+
+### `variable.FilterList` Mandatory Params
+
+- `variable.FilterParams.EnvID`: The environment ID to get variables from
+
+### `variable.FilterList` Optional Params & Default Values
+
+- `variable.FilterParams.Key`: The string to be used as parameter for the list filter
+
+<p align="right"><em><a href="../#edgiovariables">back to the main README</a></em></p>

@@ -69,9 +69,7 @@ There is no mandatory parameters for that function
 
 There is no optional parameters for that function
 
-<p align="right"><em><a href="../#edgio-organizations-api">back to the main README</a></em></p>
-
-## `property.FilterList(params FilterParams) (common.FilteredListResultType[common.Property], error)`
+## `property.FilterList(params property.FilterParams) (common.FilteredListResultType[common.Property], error)`
 
 ```go
 params := common.ClientParams{
@@ -92,3 +90,5 @@ This func has no mandatory params.
 ### `property.FilterList` Optional Params & Default Values
 
 - `property.FilterParams.Slug`: The string to be used as slug to filter the property list
+
+<p align="right"><em><a href="../#edgioproperty">back to the main README</a></em></p>

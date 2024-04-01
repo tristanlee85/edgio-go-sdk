@@ -67,4 +67,4 @@ This func list environments for a given Edgio Property. Edgio's list page size w
 
 There is no optional parameters for that function
 
-<p align="right"><em><a href="../#edgio-organizations-api">back to the main README</a></em></p>
+<p align="right"><em><a href="../#edgioenvironment">back to the main README</a></em></p>
