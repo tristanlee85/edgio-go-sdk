@@ -116,6 +116,10 @@ This function has mainly three related goals:
 2. treat HTTP errors in a standardized way, and;
 3. Process and decode returned json data from the endpoints.
 
+#### `utils.FilterList[T utils.Filterable](params utils.FilterListParams[T]) []T`
+
+Filters the list of items (haystack) by the given needle. Returns a list of items that contain the needle in their name, key or slug, depending on the entity type (Property, Environment, Variable), or an empty list if no items match the needle.
+
 Check a more in-depth documentation of the `internal/utils` package [here](internal/utils/README.md).
 
 <p align="right"><em><a href="#table-of-contents">back to top</a></em></p>
@@ -170,6 +174,10 @@ This func returns a new client with the provided parameters, with an access toke
 
 This func lists properties for a given Edgio Organization. Edgio's list page size was defaulted to 100 for now, which is the highest value. The idea is to return all properties until actual pagination is implemented. Returns a list of properties for a given Organization or an error if anything goes wrong.
 
+#### `property.FilterList(params FilterParams) (common.FilteredListResultType[common.Property], error)`
+
+Filters the list of properties for a given Org by the property slug, and returns a list of properties that contain the provided slug, or all properties if no slug is provided.
+
 Check a more in-depth documentation of the `edgio/property` package [here](property/README.md).
 
 **Reference**: [Edgio Properties REST API documentation reference](https://docs.edg.io/rest_api/#tag/properties).
@@ -190,6 +198,10 @@ This func returns a new client with the provided parameters, with an access toke
 
 This func list environments for a given Edgio Property. Edgio's list page size was defaulted to 100 for now, which is the highest value. The idea is to return all environments until actual pagination is implemented. Returns a list of environments for a given Property or an error if anything goes wrong.
 
+#### `env.FilterList(params FilterParams) (common.FilteredListResultType[common.Env], error)`
+
+Filters the list of environments for a given Property by the environment name, and returns a list of environments for a given Property that contain the provided name, or all environments if no name is provided.
+
 Check a more in-depth documentation of the `edgio/property` package [here](env/README.md).
 
 **Reference**: [Edgio Environments REST API documentation reference](https://docs.edg.io/rest_api/#tag/environments).
@@ -209,6 +221,10 @@ This func returns a new client with the provided parameters, with an access toke
 #### `variable.List(environmentID string) (ListResultType, error)`
 
 This func list environment variables for a given Edgio Environment. Edgio's list page size was defaulted to 100 for now, which is the highest value. The idea is to return all environment variables until actual pagination is implemented. Returns a list of environment variables for a given Property or an error if anything goes wrong.
+
+#### `variable.FilterList(params FilterParams) (common.FilteredListResultType[common.Variable], error)`
+
+This func filters the list of environment variables for a given Environment by the variable key, and returns a list of environment variables that contain the provided key, or all environment variables if no key is provided.
 
 Check a more in-depth documentation of the `edgio/variables` package [here](variables/README.md).
 

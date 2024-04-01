@@ -59,7 +59,7 @@ func (c ClientStruct) List(propertyID string) (ListResult, error) {
 // env.FilterParams.PropertyID
 // Optional params:
 // env.FilterParams.Name
-// Returns a list of environments for a given Property, or an error if anything goes wrong.
+// Returns a list of environments for a given Property that contain the provided name, or all environments if no name is provided.
 func (c ClientStruct) FilterList(params FilterParams) (common.FilteredListResultType[common.Env], error) {
 	if params.PropertyID == "" {
 		return common.FilteredListResultType[common.Env]{}, errors.New("PropertyID is required")

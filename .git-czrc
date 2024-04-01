@@ -131,6 +131,10 @@
                         "desc": "internal:   Internal tools and utilities"
                     },
                     {
+                        "name": "general",
+                        "desc": "general:    General changes that may affect multiple packages"
+                    },
+                    {
                         "name": "m-role",
                         "desc": "m-role:     Managed Rules (profiles) API"
                     },
