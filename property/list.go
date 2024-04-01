@@ -53,6 +53,10 @@ func (c ClientStruct) List() (ListResult, error) {
 	return propertyListResult, nil
 }
 
+// FilterList Filters the list of properties for a given Org by the property slug.
+// Optional params:
+// property.FilterParams.Slug
+// Returns a list of properties that contain the provided slug, or all properties if no slug is provided.
 func (c ClientStruct) FilterList(params FilterParams) (common.FilteredListResultType[common.Property], error) {
 	fullPropertyList, err := c.List()
 	if err != nil {
