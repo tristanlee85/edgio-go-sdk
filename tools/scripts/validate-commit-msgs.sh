@@ -2,7 +2,7 @@
 
 commitSummaryRegex="^(\+|\-)\s[a-z0-9]+\s(.+)$"
 commitTypeRegex="^(chore|docs|feat|fix|perf|ref|revert|style|test|wip)"
-commitScopeRegex="^[a-z]+(\((a-rule|a-schema|acl|app-scope|bot-cfg|bot-rule|bot|c-rule|cache|cdn|ci-cd|client|common|config|deployment|e-rule|env-var|env|internal|m-role|org|property|r-rule|tls|token|util)\))?\:\s"
+commitScopeRegex="^[a-z]+(\((a-rule|a-schema|acl|app-scope|bot-cfg|general|bot-rule|bot|c-rule|cache|cdn|ci-cd|client|common|config|deployment|e-rule|env-var|env|internal|m-role|org|property|r-rule|tls|token|util)\))?\:\s"
 issueNumberRegex="\s(\[#[0-9]+\]|\(#[0-9]+\))$"
 defectiveCommitSummaries=()
 
