@@ -70,3 +70,25 @@ There is no mandatory parameters for that function
 There is no optional parameters for that function
 
 <p align="right"><em><a href="../#edgio-organizations-api">back to the main README</a></em></p>
+
+## `property.FilterList(params FilterParams) (common.FilteredListResultType[common.Property], error)`
+
+```go
+params := common.ClientParams{
+  Credentials: common.Creds{ ... },
+  Config: common.ClientConfig{OrgID: "some-org-id"},
+}
+
+client, _ := property.NewClient(params)
+List, _ := client.FilterList(property.FilterParams{ Slug: "some-slug" }) // [{ "ID": "prop-id", "Slug": "some-slug", "CreatedAt": "2019-08-24T14:15:22Z", "UpdatedAt": "2019-08-24T14:15:22Z" }]
+```
+
+Filters the list of properties for a given Org by the property slug, and returns a list of properties that contain the provided slug, or all properties if no slug is provided.
+
+### `property.FilterList` Mandatory Params
+
+This func has no mandatory params.
+
+### `property.FilterList` Optional Params & Default Values
+
+- `property.FilterParams.Slug`: The string to be used as slug to filter the property list
