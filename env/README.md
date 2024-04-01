@@ -67,4 +67,32 @@ This func list environments for a given Edgio Property. Edgio's list page size w
 
 There is no optional parameters for that function
 
+## `env.FilterList(params env.FilterParams) (common.FilteredListResultType[common.Env], error)`
+
+```go
+params := common.ClientParams{
+  Credentials: common.Creds{ ... }
+}
+
+client, _ := env.NewClient(params)
+filterParams := env.FilterParams{
+  PropertyID: "some-property-id",
+  Name:       "some-env",
+}
+
+FilteredList, _ := client.FilterList(filterParams)
+
+fmt.Println(FilteredList) // [{ "ID": "some-id", "Name": "some-env", "LegacyAccNumber": "some-acc-number", "DefaultDomainName": "some-domain-name", "DNSDomainName": "some-dns", "CanMembersDeploy": true, "OnlyMaintainersCanDeploy": true, "HTTPRequestLogging": true, "PciCompliance": true, "CreatedAt": "2019-08-24T14:15:22Z", "UpdatedAt": "2019-08-24T14:15:22Z" }]
+```
+
+Filters the list of environments for a given Property by the environment name, and returns a list of environments for a given Property that contain the provided name, or all environments if no name is provided.
+
+### `env.FilterList` Mandatory Params
+
+- `env.FilterParams.propertyID`: Property ID from the property which owns the environments to be retrieved
+
+### `env.FilterList` Optional Params
+
+- `env.FilterParams.Name`: the string to be used as a environment name filter
+
 <p align="right"><em><a href="../#edgioenvironment">back to the main README</a></em></p>

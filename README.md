@@ -52,7 +52,7 @@ This project goal is to implement a GO SDK wrapper for the [Edgio's REST API](ht
     - [edgio/org](#edgioorg)
   - Properties APIs
     - [edgio/property](#edgioproperty)
-    - [edgio/environment](#edgioenvironment)
+    - [edgio/env](#edgioenvironment)
   - TSL Certificates APIs
     - [edgio/tsl](#edgiotsl)
   - WAF (Security) APIs
@@ -184,7 +184,7 @@ Check a more in-depth documentation of the `edgio/property` package [here](prope
 
 <p align="right"><em><a href="#table-of-contents">back to top</a></em></p>
 
-### edgio/environment
+### edgio/env
 
 [WIP]
 
