@@ -56,6 +56,7 @@ jobs:
           version: latest
           args: --out-format=checkstyle:lint-report.out
           only-new-issues: true
+          skip-pkg-cache: true
 
       - name: Run Unit Tests and get Coverage
         run: make coverage
