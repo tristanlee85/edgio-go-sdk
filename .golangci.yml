@@ -7,27 +7,28 @@ output:
 linters:
   enable-all: true
   disable:
-    - maligned
-    - golint
-    - varcheck
-    - scopelint
     - deadcode
-    - structcheck
-    - interfacer
-    - ifshort
-    - exhaustivestruct
-    - nosnakecase
-    - exhaustruct
-    - gci
     - depguard
-    - goerr113
-    - tagliatelle
-    - wrapcheck
-    - unconvert
-    - noctx
-    - gochecknoglobals
+    - exhaustivestruct
+    - exhaustruct
     - forcetypeassert
-    - paralleltest
-    - wastedassign
-    - gofumpt
     - funlen
+    - gci
+    - gochecknoglobals
+    - goerr113
+    - gofumpt
+    - golint
+    - ifshort
+    - interfacer
+    - ireturn
+    - maligned
+    - noctx
+    - nosnakecase
+    - paralleltest
+    - scopelint
+    - structcheck
+    - tagliatelle
+    - unconvert
+    - varcheck
+    - wastedassign
+    - wrapcheck
