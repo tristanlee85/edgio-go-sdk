@@ -11,10 +11,6 @@ import (
 )
 
 type ListResult common.BaseListResultType[common.Env]
-type FilterParams struct {
-	PropertyID string
-	Name       string
-}
 
 var envListResult ListResult
 
