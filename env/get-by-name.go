@@ -21,7 +21,7 @@ func (c ClientStruct) GetByName(params FilterParams) (common.Env, error) {
 		return common.Env{}, errors.New(err.Error())
 	}
 
-	if params.PropertyID == "" {
+	if params.Name == "" {
 		return common.Env{}, errors.New("'Name' is required")
 	}
 
