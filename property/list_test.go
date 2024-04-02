@@ -11,26 +11,6 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-const propertiesURL = "/accounts/v0.1/properties"
-const accessTokenResult = `{"access_token": "test_token"}`
-const listResult = `{
-    "total_items": 2,
-    "items": [
-        {
-            "id": "some-id",
-            "slug": "some-slug",
-            "created_at": "2019-08-24T14:15:22Z",
-            "updated_at": "2019-08-24T14:15:22Z"
-        },
-        {
-            "id": "another-id",
-            "slug": "another-slug",
-            "created_at": "2019-08-24T14:15:22Z",
-            "updated_at": "2019-08-24T14:15:22Z"
-        }
-    ]
-}`
-
 func TestList(t *testing.T) {
 	mux := http.NewServeMux()
 
@@ -38,7 +18,7 @@ func TestList(t *testing.T) {
 	defer server.Close()
 
 	server2 := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, _ *http.Request) {
-		_, err := rw.Write([]byte(accessTokenResult))
+		_, err := rw.Write([]byte(authResult))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -46,7 +26,7 @@ func TestList(t *testing.T) {
 	defer server2.Close()
 
 	mux.HandleFunc(propertiesURL, func(rw http.ResponseWriter, _ *http.Request) {
-		_, err := rw.Write([]byte(listResult))
+		_, err := rw.Write([]byte(propertiesResponse))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -72,7 +52,7 @@ func TestList(t *testing.T) {
 
 func TestListParseURLError(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, _ *http.Request) {
-		_, err := rw.Write([]byte(accessTokenResult))
+		_, err := rw.Write([]byte(authResult))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -99,7 +79,7 @@ func TestListParseURLError(t *testing.T) {
 
 func TestListNewRequestError(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, _ *http.Request) {
-		_, err := rw.Write([]byte(accessTokenResult))
+		_, err := rw.Write([]byte(authResult))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -130,7 +110,7 @@ func TestListGetHTTPJSONResultError(t *testing.T) {
 	defer server.Close()
 
 	server2 := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, _ *http.Request) {
-		_, err := rw.Write([]byte(accessTokenResult))
+		_, err := rw.Write([]byte(authResult))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -168,7 +148,7 @@ func TestListMapstructureDecodeError(t *testing.T) {
 	defer server.Close()
 
 	server2 := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, _ *http.Request) {
-		_, err := rw.Write([]byte(accessTokenResult))
+		_, err := rw.Write([]byte(authResult))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -204,7 +184,7 @@ func TestListMapstructureDecodeError(t *testing.T) {
 
 func TestFilterList(t *testing.T) {
 	server2 := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, _ *http.Request) {
-		_, err := rw.Write([]byte(accessTokenResult))
+		_, err := rw.Write([]byte(authResult))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -247,7 +227,7 @@ func TestFilterList(t *testing.T) {
 		defer server.Close()
 
 		mux.HandleFunc(propertiesURL, func(rw http.ResponseWriter, _ *http.Request) {
-			_, err := rw.Write([]byte(listResult))
+			_, err := rw.Write([]byte(propertiesResponse))
 			if err != nil {
 				t.Fatal(err)
 			}
@@ -269,7 +249,7 @@ func TestFilterList(t *testing.T) {
 		defer server.Close()
 
 		mux.HandleFunc(propertiesURL, func(rw http.ResponseWriter, _ *http.Request) {
-			_, err := rw.Write([]byte(listResult))
+			_, err := rw.Write([]byte(propertiesResponse))
 			if err != nil {
 				t.Fatal(err)
 			}

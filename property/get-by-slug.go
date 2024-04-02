@@ -4,6 +4,7 @@ import (
 	"edgio/common"
 	"edgio/internal/utils"
 	"errors"
+	"fmt"
 )
 
 // GetBySlug returns the first property in the list that matches the slug.
@@ -14,6 +15,7 @@ func (c ClientStruct) GetBySlug(params FilterParams) (common.Property, error) {
 	if params.Slug == "" {
 		return common.Property{}, errors.New("'Slug' is required")
 	}
+	fmt.Println(c)
 
 	fullPropertyList, err := c.List()
 	if err != nil {
