@@ -11,30 +11,6 @@ import (
 	"github.com/stretchr/testify/require"
 )
 
-const envVarURL = "/config/v0.1/environment-variables"
-const tokenReturn = `{"access_token": "test_token"}`
-const variablesResponse = `{
-    "total_items": 2,
-    "items": [
-        {
-            "id": "some-id",
-            "key": "some-env-var-key",
-            "value": "some-value",
-            "secret": true,
-            "create_at": "2019-08-24T14:15:22Z",
-            "updated_at": "2019-08-24T14:15:22Z"
-        },
-        {
-            "id": "another-id",
-            "key": "another-env-var-key",
-            "value": "another-value",
-            "secret": false,
-            "create_at": "2019-08-24T14:15:22Z",
-            "updated_at": "2019-08-24T14:15:22Z"
-        }
-    ]
-}`
-
 func TestList(t *testing.T) {
 	mux := http.NewServeMux()
 
@@ -42,7 +18,7 @@ func TestList(t *testing.T) {
 	defer server.Close()
 
 	server2 := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, _ *http.Request) {
-		_, err := rw.Write([]byte(tokenReturn))
+		_, err := rw.Write([]byte(authResult))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -76,7 +52,7 @@ func TestList(t *testing.T) {
 
 func TestListParseURLError(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, _ *http.Request) {
-		_, err := rw.Write([]byte(tokenReturn))
+		_, err := rw.Write([]byte(authResult))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -103,7 +79,7 @@ func TestListParseURLError(t *testing.T) {
 
 func TestListNewRequestError(t *testing.T) {
 	server := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, _ *http.Request) {
-		_, err := rw.Write([]byte(tokenReturn))
+		_, err := rw.Write([]byte(authResult))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -134,7 +110,7 @@ func TestListGetHTTPJSONResultError(t *testing.T) {
 	defer server.Close()
 
 	server2 := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, _ *http.Request) {
-		_, err := rw.Write([]byte(tokenReturn))
+		_, err := rw.Write([]byte(authResult))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -172,7 +148,7 @@ func TestListMapstructureDecodeError(t *testing.T) {
 	defer server.Close()
 
 	server2 := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, _ *http.Request) {
-		_, err := rw.Write([]byte(tokenReturn))
+		_, err := rw.Write([]byte(authResult))
 		if err != nil {
 			t.Fatal(err)
 		}
@@ -205,7 +181,7 @@ func TestListMapstructureDecodeError(t *testing.T) {
 
 func TestFilterList(t *testing.T) {
 	server2 := httptest.NewServer(http.HandlerFunc(func(rw http.ResponseWriter, _ *http.Request) {
-		_, err := rw.Write([]byte(tokenReturn))
+		_, err := rw.Write([]byte(authResult))
 		if err != nil {
 			t.Fatal(err)
 		}
