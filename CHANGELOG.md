@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.0-beta.4](https://github.com/42dx/edgio-go-sdk/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2024-04-02)
+
+### ⚙️ New Features
+
+* **env-var**: implemented FilterList on variable pkg [[#25](https://github.com/42dx/edgio-go-sdk/issues/25)] ([5a96ae4](https://github.com/42dx/edgio-go-sdk/commit/5a96ae47df30d26060f315a37f47ceb097322228))
+* **env**: implemented FilterList on env pkg [[#25](https://github.com/42dx/edgio-go-sdk/issues/25)] ([34fad62](https://github.com/42dx/edgio-go-sdk/commit/34fad62dc51773178bc72175d18ee0d8f8411f74))
+* **property**: implemented FilterList on property pkg [[#25](https://github.com/42dx/edgio-go-sdk/issues/25)] ([a755d4a](https://github.com/42dx/edgio-go-sdk/commit/a755d4a625a94054a04ab397cae87b03ef93815c))
+* **util**: added generic filter list func [[#25](https://github.com/42dx/edgio-go-sdk/issues/25)] ([1d7b413](https://github.com/42dx/edgio-go-sdk/commit/1d7b413bcba173aef1509a768a29f55c17126c92))
+
 ## [1.0.0-beta.3](https://github.com/42dx/edgio-go-sdk/compare/v1.0.0-beta.2...v1.0.0-beta.3) (2024-03-15)
 
 ### ⚙️ New Features
