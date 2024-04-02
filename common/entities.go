@@ -8,6 +8,16 @@ type Searchable interface {
 	GetSlug() string
 }
 
+type Filterable interface {
+	Searchable
+	Property | Env | Variable
+}
+
+type FilterListParams[T Filterable] struct {
+	Needle   string
+	Haystack []T
+}
+
 type Org struct {
 	Searchable
 

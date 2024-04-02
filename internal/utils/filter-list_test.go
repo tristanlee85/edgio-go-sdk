@@ -29,7 +29,7 @@ func TestFilterList(t *testing.T) {
 	}
 
 	t.Run("returns items that match the needle (with 'Slug')", func(t *testing.T) {
-		params := utils.FilterListParams[common.Property]{Needle: "1", Haystack: propertyHaystack}
+		params := common.FilterListParams[common.Property]{Needle: "1", Haystack: propertyHaystack}
 		result := utils.FilterList[common.Property](params)
 
 		assert.Len(t, result, 1)
@@ -37,7 +37,7 @@ func TestFilterList(t *testing.T) {
 	})
 
 	t.Run("returns items that match the needle (with 'Name')", func(t *testing.T) {
-		params := utils.FilterListParams[common.Env]{Needle: "1", Haystack: envHaystack}
+		params := common.FilterListParams[common.Env]{Needle: "1", Haystack: envHaystack}
 		result := utils.FilterList[common.Env](params)
 
 		assert.Len(t, result, 1)
@@ -45,7 +45,7 @@ func TestFilterList(t *testing.T) {
 	})
 
 	t.Run("returns items that match the needle (with 'Key')", func(t *testing.T) {
-		params := utils.FilterListParams[common.Variable]{Needle: "1", Haystack: variableHaystack}
+		params := common.FilterListParams[common.Variable]{Needle: "1", Haystack: variableHaystack}
 		result := utils.FilterList[common.Variable](params)
 
 		assert.Len(t, result, 1)
@@ -53,14 +53,14 @@ func TestFilterList(t *testing.T) {
 	})
 
 	t.Run("returns no items when none match the needle", func(t *testing.T) {
-		params := utils.FilterListParams[common.Property]{Needle: "4", Haystack: propertyHaystack}
+		params := common.FilterListParams[common.Property]{Needle: "4", Haystack: propertyHaystack}
 		result := utils.FilterList[common.Property](params)
 
 		assert.Empty(t, result)
 	})
 
 	t.Run("filter is case sensitive", func(t *testing.T) {
-		params := utils.FilterListParams[common.Property]{Needle: strings.ToUpper("slug1"), Haystack: propertyHaystack}
+		params := common.FilterListParams[common.Property]{Needle: strings.ToUpper("slug1"), Haystack: propertyHaystack}
 		result := utils.FilterList[common.Property](params)
 
 		assert.Empty(t, result)

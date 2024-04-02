@@ -84,7 +84,7 @@ func (c ClientStruct) FilterList(params FilterParams) (common.FilteredListResult
 	}
 
 	filteredProperties := utils.FilterList[common.Variable](
-		utils.FilterListParams[common.Variable]{Needle: params.Key, Haystack: fullVarList.Items},
+		common.FilterListParams[common.Variable]{Needle: params.Key, Haystack: fullVarList.Items},
 	)
 
 	return common.FilteredListResultType[common.Variable]{

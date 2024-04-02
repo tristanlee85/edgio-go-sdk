@@ -116,7 +116,7 @@ This function has mainly three related goals:
 2. treat HTTP errors in a standardized way, and;
 3. Process and decode returned json data from the endpoints.
 
-#### `utils.FilterList[T utils.Filterable](params utils.FilterListParams[T]) []T`
+#### `utils.FilterList[T common.Filterable](params common.FilterListParams[T]) []T`
 
 Filters the list of items (haystack) by the given needle. Returns a list of items that contain the needle in their name, key or slug, depending on the entity type (Property, Environment, Variable), or an empty list if no items match the needle.
 
