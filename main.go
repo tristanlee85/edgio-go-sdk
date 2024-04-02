@@ -35,6 +35,7 @@ func main() {
 		return
 	}
 
+	fmt.Println("FilterList")
 	properties, _ := propertyClient.FilterList(property.FilterParams{Slug: "-ca"})
 
 	envClient, err := env.NewClient(common.ClientParams{
@@ -78,5 +79,20 @@ func main() {
 			}
 		}
 	}
+
+	fmt.Println("GetByAttr")
+
+	property, _ := propertyClient.GetBySlug(property.FilterParams{Slug: "cart-ca"})
+
+	fmt.Println("Property: " + property.Slug)
+
+	stageEnv, _ := envClient.GetByName(env.FilterParams{PropertyID: property.ID, Name: "stage"})
+
+	fmt.Println("Env: " + stageEnv.Name)
+
+	variable, _ := variableClient.GetByKey(variable.FilterParams{EnvID: stageEnv.ID, Key: "EXPERIAN_ADDR_KEY"})
+
+	fmt.Println("Variable: " + variable.Key + " = " + variable.Value)
+
 	fmt.Println("main.go")
 }

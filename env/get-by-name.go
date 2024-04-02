@@ -16,13 +16,13 @@ func (c ClientStruct) GetByName(params FilterParams) (common.Env, error) {
 		return common.Env{}, errors.New("'PropertyID' is required")
 	}
 
+	if params.Name == "" {
+		return common.Env{}, errors.New("'Name' is required")
+	}
+
 	fullEnvList, err := c.List(params.PropertyID)
 	if err != nil {
 		return common.Env{}, errors.New(err.Error())
-	}
-
-	if params.Name == "" {
-		return common.Env{}, errors.New("'Name' is required")
 	}
 
 	return utils.GetByAttr[common.Env](

@@ -11,13 +11,13 @@ import (
 // FilterParams.Slug
 // Returns the first property that matches the slug or nil if no properties match the slug.
 func (c ClientStruct) GetBySlug(params FilterParams) (common.Property, error) {
+	if params.Slug == "" {
+		return common.Property{}, errors.New("'Slug' is required")
+	}
+
 	fullPropertyList, err := c.List()
 	if err != nil {
 		return common.Property{}, errors.New(err.Error())
-	}
-
-	if params.Slug == "" {
-		return common.Property{}, errors.New("'Slug' is required")
 	}
 
 	return utils.GetByAttr[common.Property](
