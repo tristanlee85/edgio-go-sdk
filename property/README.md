@@ -91,4 +91,22 @@ This func has no mandatory params.
 
 - `property.FilterParams.Slug`: The string to be used as slug to filter the property list
 
+## `GetBySlug(params FilterParams) (common.Property, error)`
+
+```go
+propertyClient, err := property.NewClient(common.ClientParams{
+  Credentials: common.Creds{ ... },
+})
+
+property, _ := propertyClient.GetBySlug(property.FilterParams{Slug: "cart-ca"})
+
+fmt.Println(property) // { "id": "some-id", "slug": "some-slug", "created_at": "2019-08-24T14:15:22Z", "updated_at": "2019-08-24T14:15:22Z" }
+```
+
+This func returns the first property in the list that matches the slug, or nil if no properties match the slug.
+
+### `property.GetBySlug` Mandatory Params
+
+- `property.FilterParams.Slug`: The string to be used as slug to filter the property list
+
 <p align="right"><em><a href="../#edgioproperty">back to the main README</a></em></p>

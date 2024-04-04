@@ -178,6 +178,10 @@ This func lists properties for a given Edgio Organization. Edgio's list page siz
 
 Filters the list of properties for a given Org by the property slug, and returns a list of properties that contain the provided slug, or all properties if no slug is provided.
 
+#### `GetBySlug(params FilterParams) (common.Property, error)`
+
+Returns the first property in the list that matches the slug, or nil if no properties match the slug.
+
 Check a more in-depth documentation of the `edgio/property` package [here](property/README.md).
 
 **Reference**: [Edgio Properties REST API documentation reference](https://docs.edg.io/rest_api/#tag/properties).
