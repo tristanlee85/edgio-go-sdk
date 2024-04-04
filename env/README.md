@@ -117,4 +117,6 @@ This func returns the first environment in the list that matches the name, or ni
 
 ### `env.GetByName` Optional Params
 
+There is no optional parameters for that function
+
 <p align="right"><em><a href="../#edgioenvironment">back to the main README</a></em></p>

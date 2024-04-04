@@ -89,4 +89,27 @@ This func filters the list of environment variables for a given Environment by t
 
 - `variable.FilterParams.Key`: The string to be used as parameter for the list filter
 
+## `GetByKey(params FilterParams) (common.Variable, error)`
+
+```go
+variableClient, _ := variable.NewClient(common.ClientParams{
+  Credentials: common.Creds{ ... },
+})
+
+variable, _ := variableClient.GetByKey(variable.FilterParams{EnvID: "some-env-id", Key: "SOME_ENV_VAR"})
+
+fmt.Println(variable) // "id": "some-id", "key": "some-env-var-key", "value": "some-value", "secret": true, "create_at": "2019-08-24T14:15:22Z", "updated_at": "2019-08-24T14:15:22Z" }
+```
+
+This func returns the environment variable that matches the provided key, or nil if no environment variables match the key.
+
+### `variable.GetByKey` Mandatory Params
+
+- `variable.FilterParams.EnvID`: The environment ID to get variables from
+- `variable.FilterParams.Key`: The string to be used as parameter for the list filter
+
+### `variable.GetByKey` Optional Params & Default Values
+
+There is no optional parameters for that function
+
 <p align="right"><em><a href="../#edgiovariables">back to the main README</a></em></p>
