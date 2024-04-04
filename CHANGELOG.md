@@ -1,5 +1,14 @@
 # Changelog
 
+## [1.0.0-beta.5](https://github.com/42dx/edgio-go-sdk/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-04-04)
+
+### ⚙️ New Features
+
+* **env-var**: added GetByKey func to edgio/variable pkg [[#42](https://github.com/42dx/edgio-go-sdk/issues/42)] ([29296cc](https://github.com/42dx/edgio-go-sdk/commit/29296ccba7c6048b86ce5d2e21f085523b549287))
+* **env**: added GetByName func to edgio/env pkg [[#42](https://github.com/42dx/edgio-go-sdk/issues/42)] ([93c2894](https://github.com/42dx/edgio-go-sdk/commit/93c28944f7796ca538dd1c7c0fb8e999c0b2da16))
+* **property**: added GetBySlug func to edgio/property pkg [[#42](https://github.com/42dx/edgio-go-sdk/issues/42)] ([f5c87c5](https://github.com/42dx/edgio-go-sdk/commit/f5c87c5bbf853b952f04fd4a24057fff57f54a58))
+* **util**: added base GetByAttr util func [[#42](https://github.com/42dx/edgio-go-sdk/issues/42)] ([62605bb](https://github.com/42dx/edgio-go-sdk/commit/62605bb430fa5e6a53ba0022aac1bbb26e602ecd))
+
 ## [1.0.0-beta.4](https://github.com/42dx/edgio-go-sdk/compare/v1.0.0-beta.3...v1.0.0-beta.4) (2024-04-02)
 
 ### ⚙️ New Features
