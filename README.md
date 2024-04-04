@@ -202,7 +202,11 @@ This func list environments for a given Edgio Property. Edgio's list page size w
 
 Filters the list of environments for a given Property by the environment name, and returns a list of environments for a given Property that contain the provided name, or all environments if no name is provided.
 
-Check a more in-depth documentation of the `edgio/property` package [here](env/README.md).
+#### `env.GetByName(params FilterParams) (common.Env, error)`
+
+Returns the first environment in the list that matches the name, or nil if no environments match the name.
+
+Check a more in-depth documentation of the `edgio/env` package [here](env/README.md).
 
 **Reference**: [Edgio Environments REST API documentation reference](https://docs.edg.io/rest_api/#tag/environments).
 

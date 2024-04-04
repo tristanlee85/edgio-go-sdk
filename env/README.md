@@ -93,6 +93,28 @@ Filters the list of environments for a given Property by the environment name, a
 
 ### `env.FilterList` Optional Params
 
-- `env.FilterParams.Name`: the string to be used as a environment name filter
+- `env.FilterParams.Name`: The string to be used as a environment name filter
+
+## `env.GetByName(params FilterParams) (common.Env, error)`
+
+```go
+
+envClient, err := env.NewClient(common.ClientParams{
+  Credentials: common.Creds{ ... },
+})
+
+env, _ := envClient.GetByName(env.FilterParams{PropertyID: "some-property-id", Name: "some-env-name"})
+
+fmt.Println(env) // { "id": "some-id", "name": "some-env-name", "legacy_account_number": "", "default_domain_name": "", "dns_domain_name": "", "can_members_deploy": true, "only_maintainers_can_deploy": true, "http_request_logging": true, "pci_compliance": true, "created_at": "2019-08-24T14:15:22Z", "updated_at": "2019-08-24T14:15:22Z" }
+```
+
+This func returns the first environment in the list that matches the name, or nil if no environments match the name.
+
+### `env.GetByName` Mandatory Params
+
+- `env.FilterParams.PropertyID`: Property ID from the property which owns the environments to be retrieved
+- `env.FilterParams.Name`: The string to be used as a environment name filter
+
+### `env.GetByName` Optional Params
 
 <p align="right"><em><a href="../#edgioenvironment">back to the main README</a></em></p>
