@@ -78,7 +78,9 @@ params := common.ClientParams{
 }
 
 client, _ := property.NewClient(params)
-List, _ := client.FilterList(property.FilterParams{ Slug: "some-slug" }) // [{ "ID": "prop-id", "Slug": "some-slug", "CreatedAt": "2019-08-24T14:15:22Z", "UpdatedAt": "2019-08-24T14:15:22Z" }]
+list, _ := client.FilterList(property.FilterParams{ Slug: "some-slug" })
+
+fmt.Println(list) // [{ "ID": "prop-id", "Slug": "some-slug", "CreatedAt": "2019-08-24T14:15:22Z", "UpdatedAt": "2019-08-24T14:15:22Z" }]
 ```
 
 Filters the list of properties for a given Org by the property slug, and returns a list of properties that contain the provided slug, or all properties if no slug is provided.
@@ -90,6 +92,30 @@ This func has no mandatory params.
 ### `property.FilterList` Optional Params & Default Values
 
 - `property.FilterParams.Slug`: The string to be used as slug to filter the property list
+
+## `property.Get(params property.FilterParams) (common.Property, error)`
+
+```go
+params := common.ClientParams{
+  Credentials: common.Creds{ ... },
+  Config: common.ClientConfig{OrgID: "some-org-id"},
+}
+
+client, _ := property.NewClient(params)
+property, _ := client.Get(property.FilterParams{ ID: "some-property-id" })
+
+fmt.Println(property) // { "ID": "some-property-id", "Slug": "some-slug", "CreatedAt": "2019-08-24T14:15:22Z", "UpdatedAt": "2019-08-24T14:15:22Z" }
+```
+
+This func retrieves a property by ID and returns it, or empty if none was found.
+
+### `property.Get` Mandatory Params
+
+- `property.FilterParams.ID`: The string to be used as ID to get the desired property
+
+### `property.Get` Optional Params & Default Values
+
+This func has no optional params.
 
 ## `GetBySlug(params FilterParams) (common.Property, error)`
 

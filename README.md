@@ -52,7 +52,7 @@ This project goal is to implement a GO SDK wrapper for the [Edgio's REST API](ht
     - [edgio/org](#edgioorg)
   - Properties APIs
     - [edgio/property](#edgioproperty)
-    - [edgio/env](#edgioenvironment)
+    - [edgio/env](#edgioenv)
   - TSL Certificates APIs
     - [edgio/tsl](#edgiotsl)
   - WAF (Security) APIs
@@ -177,6 +177,10 @@ This func lists properties for a given Edgio Organization. Edgio's list page siz
 #### `property.FilterList(params property.FilterParams) (common.FilteredListResultType[common.Property], error)`
 
 Filters the list of properties for a given Org by the property slug, and returns a list of properties that contain the provided slug, or all properties if no slug is provided.
+
+#### `property.Get(params property.FilterParams) (common.Property, error)`
+
+This func retrieves a property by ID and returns it, or empty if none was found.
 
 #### `GetBySlug(params FilterParams) (common.Property, error)`
 
