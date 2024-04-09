@@ -28,12 +28,12 @@ type Org struct {
 type Variable struct {
 	Searchable
 
-	ID        string
-	Key       string
-	Value     string
-	Secret    bool
-	CreatedAt time.Time
-	UpdatedAt time.Time
+	ID        string    `mapstructure:"id"`
+	Key       string    `mapstructure:"key"`
+	Value     string    `mapstructure:"value"`
+	Secret    bool      `mapstructure:"secret"`
+	CreatedAt time.Time `mapstructure:"createdAt"`
+	UpdatedAt time.Time `mapstructure:"updatedAt"`
 }
 
 // GetKey returns the Key value of the Variable.

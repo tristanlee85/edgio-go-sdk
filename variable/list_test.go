@@ -25,7 +25,7 @@ func TestList(t *testing.T) {
 	}))
 	defer server2.Close()
 
-	mux.HandleFunc(envVarURL, func(rw http.ResponseWriter, _ *http.Request) {
+	mux.HandleFunc(envVarsURL, func(rw http.ResponseWriter, _ *http.Request) {
 		_, err := rw.Write([]byte(variablesResponse))
 		if err != nil {
 			t.Fatal(err)
@@ -117,7 +117,7 @@ func TestListGetHTTPJSONResultError(t *testing.T) {
 	}))
 	defer server2.Close()
 
-	mux.HandleFunc(envVarURL, func(rw http.ResponseWriter, _ *http.Request) {
+	mux.HandleFunc(envVarsURL, func(rw http.ResponseWriter, _ *http.Request) {
 		_, err := rw.Write([]byte(`error`))
 		if err != nil {
 			t.Fatal(err)
@@ -165,7 +165,7 @@ func TestListMapstructureDecodeError(t *testing.T) {
 		Config: common.ClientConfig{URL: server.URL},
 	}
 
-	mux.HandleFunc(envVarURL, func(rw http.ResponseWriter, _ *http.Request) {
+	mux.HandleFunc(envVarsURL, func(rw http.ResponseWriter, _ *http.Request) {
 		_, err := rw.Write([]byte(`{"items": "invalid"}`))
 		if err != nil {
 			t.Fatal(err)
@@ -204,7 +204,7 @@ func TestFilterList(t *testing.T) {
 
 		defer server.Close()
 
-		mux.HandleFunc(envVarURL, func(rw http.ResponseWriter, _ *http.Request) {
+		mux.HandleFunc(envVarsURL, func(rw http.ResponseWriter, _ *http.Request) {
 			http.Error(rw, "Internal Server Error", http.StatusInternalServerError)
 		})
 
@@ -238,7 +238,7 @@ func TestFilterList(t *testing.T) {
 
 		params.Config.URL = server.URL
 
-		mux.HandleFunc(envVarURL, func(rw http.ResponseWriter, _ *http.Request) {
+		mux.HandleFunc(envVarsURL, func(rw http.ResponseWriter, _ *http.Request) {
 			_, err := rw.Write([]byte(variablesResponse))
 			if err != nil {
 				t.Fatal(err)
@@ -261,7 +261,7 @@ func TestFilterList(t *testing.T) {
 
 		params.Config.URL = server.URL
 
-		mux.HandleFunc(envVarURL, func(rw http.ResponseWriter, _ *http.Request) {
+		mux.HandleFunc(envVarsURL, func(rw http.ResponseWriter, _ *http.Request) {
 			_, err := rw.Write([]byte(variablesResponse))
 			if err != nil {
 				t.Fatal(err)

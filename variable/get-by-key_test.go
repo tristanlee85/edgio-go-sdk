@@ -36,7 +36,7 @@ func TestGetByKey(t *testing.T) {
 		server := httptest.NewServer(mux)
 		defer server.Close()
 
-		mux.HandleFunc(envVarURL, func(rw http.ResponseWriter, _ *http.Request) {
+		mux.HandleFunc(envVarsURL, func(rw http.ResponseWriter, _ *http.Request) {
 			_, err := rw.Write([]byte(variablesResponse))
 			if err != nil {
 				t.Fatal(err)
@@ -58,7 +58,7 @@ func TestGetByKey(t *testing.T) {
 		server := httptest.NewServer(mux)
 		defer server.Close()
 
-		mux.HandleFunc(envVarURL, func(rw http.ResponseWriter, _ *http.Request) {
+		mux.HandleFunc(envVarsURL, func(rw http.ResponseWriter, _ *http.Request) {
 			_, err := rw.Write([]byte(variablesResponse))
 			if err != nil {
 				t.Fatal(err)
@@ -79,7 +79,7 @@ func TestGetByKey(t *testing.T) {
 		server := httptest.NewServer(mux)
 		defer server.Close()
 
-		mux.HandleFunc(envVarURL, func(rw http.ResponseWriter, _ *http.Request) {
+		mux.HandleFunc(envVarsURL, func(rw http.ResponseWriter, _ *http.Request) {
 			_, err := rw.Write([]byte(variablesResponse))
 			if err != nil {
 				t.Fatal(err)
@@ -100,7 +100,7 @@ func TestGetByKey(t *testing.T) {
 		server := httptest.NewServer(mux)
 		defer server.Close()
 
-		mux.HandleFunc(envVarURL, func(rw http.ResponseWriter, _ *http.Request) {
+		mux.HandleFunc(envVarsURL, func(rw http.ResponseWriter, _ *http.Request) {
 			http.Error(rw, "Internal Server Error", http.StatusInternalServerError)
 		})
 
