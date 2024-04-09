@@ -109,11 +109,11 @@ env, _ := client.Get(env.FilterParams{ ID: "some-env-id" })
 fmt.Println(env) // { "ID": "some-env-id", "Name": "some-env", "LegacyAccNumber": "some-acc-number", "DefaultDomainName": "some-domain-name", "DNSDomainName": "some-dns", "CanMembersDeploy": true, "OnlyMaintainersCanDeploy": true, "HTTPRequestLogging": true, "PciCompliance": true, "CreatedAt": "2019-08-24T14:15:22Z", "UpdatedAt": "2019-08-24T14:15:22Z" }
 ```
 
-This func retrieves an by ID and returns it, or empty if none was found.
+This func retrieves an environment by ID and returns it, or empty if none was found.
 
 ### `env.Get` Mandatory Params
 
-- `env.FilterParams.ID`: The string to be used as ID to get the desired property
+- `env.FilterParams.ID`: The string to be used as ID to get the desired environment
 
 ### `env.Get` Optional Params & Default Values
 

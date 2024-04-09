@@ -242,6 +242,10 @@ This func list environment variables for a given Edgio Environment. Edgio's list
 
 This func filters the list of environment variables for a given Environment by the variable key, and returns a list of environment variables that contain the provided key, or all environment variables if no key is provided.
 
+#### `variable.Get(params variable.FilterParams) (common.Variable, error)`
+
+This func retrieves an environment variable by ID and returns it, or empty if none was found.
+
 #### `GetByKey(params FilterParams) (common.Variable, error)`
 
 This func returns the environment variable that matches the provided key, or nil if no environment variables match the key.

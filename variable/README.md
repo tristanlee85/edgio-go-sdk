@@ -89,6 +89,30 @@ This func filters the list of environment variables for a given Environment by t
 
 - `variable.FilterParams.Key`: The string to be used as parameter for the list filter
 
+## `variable.Get(params variable.FilterParams) (common.Variable, error)`
+
+```go
+params := common.ClientParams{
+  Credentials: common.Creds{ ... },
+  Config: common.ClientConfig{OrgID: "some-org-id"},
+}
+
+client, _ := variable.NewClient(params)
+variable, _ := client.Get(variable.FilterParams{ ID: "some-variable-id" })
+
+fmt.Println(variable) // { "ID": "some-variable-id", "Key": "some-key", "Value": "some-value", "Secret": true, "CreatedAt": "2019-08-24T14:15:22Z", "UpdatedAt": "2019-08-24T14:15:22Z" }
+```
+
+This func retrieves an environment variable by ID and returns it, or empty if none was found.
+
+### `variable.Get` Mandatory Params
+
+- `variable.FilterParams.ID`: The string to be used as ID to get the desired environment variable
+
+### `variable.Get` Optional Params & Default Values
+
+This func has no optional params.
+
 ## `GetByKey(params FilterParams) (common.Variable, error)`
 
 ```go
