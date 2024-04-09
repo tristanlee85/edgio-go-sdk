@@ -12,7 +12,7 @@ import (
 
 // Get retrieves a property by ID
 // mandatory params: FilterParams.ID
-// returns retrieved property or empty if none was found.
+// returns retrieved property, or empty if none was found.
 func (c ClientStruct) Get(params FilterParams) (common.Property, error) {
 	var propertyGetResult common.Property
 

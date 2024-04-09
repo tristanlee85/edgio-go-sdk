@@ -1,6 +1,7 @@
 package env
 
 type FilterParams struct {
-	PropertyID string
+	ID         string
 	Name       string
+	PropertyID string
 }

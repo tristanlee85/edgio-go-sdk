@@ -82,17 +82,17 @@ func (p Property) GetSlug() string {
 type Env struct {
 	Searchable
 
-	ID                       string
-	Name                     string
-	LegacyAccNumber          string
-	DefaultDomainName        string
-	DNSDomainName            string
-	CanMembersDeploy         bool
-	OnlyMaintainersCanDeploy bool
-	HTTPRequestLogging       bool
-	PciCompliance            bool
-	CreatedAt                time.Time
-	UpdatedAt                time.Time
+	ID                       string    `mapstructure:"id"`
+	Name                     string    `mapstructure:"name"`
+	LegacyAccNumber          string    `mapstructure:"legacyAccNumber"`
+	DefaultDomainName        string    `mapstructure:"defaultDomainName"`
+	DNSDomainName            string    `mapstructure:"dNSDomainName"`
+	CanMembersDeploy         bool      `mapstructure:"canMembersDeploy"`
+	OnlyMaintainersCanDeploy bool      `mapstructure:"onlyMaintainersCanDeploy"`
+	HTTPRequestLogging       bool      `mapstructure:"hTTPRequestLogging"`
+	PciCompliance            bool      `mapstructure:"pciCompliance"`
+	CreatedAt                time.Time `mapstructure:"createdAt"`
+	UpdatedAt                time.Time `mapstructure:"updatedAt"`
 }
 
 // GetKey returns the Key value of the Env
