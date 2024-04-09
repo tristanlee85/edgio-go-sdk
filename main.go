@@ -87,12 +87,15 @@ func getByIdCheck() {
 
 	propertyBySlug, _ := propertyClient.GetBySlug(property.FilterParams{Slug: "some-property"})
 	envByName, _ := envClient.GetByName(env.FilterParams{PropertyID: propertyBySlug.ID, Name: "some-env"})
+	variableByKey, _ := variableClient.GetByKey(variable.FilterParams{EnvID: envByName.ID, Key: "SOME_ENV_VAR"})
 
 	property, _ := propertyClient.Get(property.FilterParams{ID: propertyBySlug.ID})
 	someEnv, _ := envClient.Get(env.FilterParams{ID: envByName.ID})
+	someVar, _ := variableClient.Get(variable.FilterParams{ID: variableByKey.ID})
 
 	fmt.Println("Property GetByID Result: " + property.Slug)
 	fmt.Println("Env GetByID Result: " + someEnv.Name)
+	fmt.Println("Variable GetByID Result: " + someVar.Key)
 }
 
 func main() {
