@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.0.0-beta.6](https://github.com/42dx/edgio-go-sdk/compare/v1.0.0-beta.5...v1.0.0-beta.6) (2024-04-09)
+
+### ⚙️ New Features
+
+* **env-var**: added Get (by id) method to variable pkg [[#19](https://github.com/42dx/edgio-go-sdk/issues/19)] ([ecddcdb](https://github.com/42dx/edgio-go-sdk/commit/ecddcdb4caf066f276836cabadfc05375879dc19))
+* **env**: added Get (by id) method to env pkg [[#14](https://github.com/42dx/edgio-go-sdk/issues/14)] ([c03f3a5](https://github.com/42dx/edgio-go-sdk/commit/c03f3a51aaf96799313c75c8d0f8dca7392e8152))
+* **property**: added Get (by id) method to property pkg [[#9](https://github.com/42dx/edgio-go-sdk/issues/9)] ([2efa1fd](https://github.com/42dx/edgio-go-sdk/commit/2efa1fd6136a53f5e63cff66836a6768e728e342))
+
 ## [1.0.0-beta.5](https://github.com/42dx/edgio-go-sdk/compare/v1.0.0-beta.4...v1.0.0-beta.5) (2024-04-04)
 
 ### ⚙️ New Features
