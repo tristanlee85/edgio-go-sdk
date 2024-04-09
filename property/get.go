@@ -12,7 +12,7 @@ import (
 
 // Get retrieves a property by ID
 // mandatory params: FilterParams.ID
-// returns retrieved property or nil if none was found.
+// returns retrieved property or empty if none was found.
 func (c ClientStruct) Get(params FilterParams) (common.Property, error) {
 	var propertyGetResult common.Property
 
@@ -28,10 +28,7 @@ func (c ClientStruct) Get(params FilterParams) (common.Property, error) {
 		return common.Property{}, errors.New(err.Error())
 	}
 
-	request, err := http.NewRequest(http.MethodGet, parsedURL.String(), nil)
-	if err != nil {
-		return common.Property{}, errors.New(err.Error())
-	}
+	request, _ := http.NewRequest(http.MethodGet, parsedURL.String(), nil)
 
 	propertiesJSONmap, err := utils.GetHTTPJSONResult(httpClient, request, c.AccessToken)
 	if err != nil {
