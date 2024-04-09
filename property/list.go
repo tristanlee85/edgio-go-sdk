@@ -11,11 +11,6 @@ import (
 )
 
 type ListResult common.BaseListResultType[common.Property]
-type FilterParams struct {
-	Slug string
-}
-
-var propertyListResult ListResult
 
 // List lists the properties from a given Organization.
 // Edgio's list page size was defaulted to 100 for now,
@@ -23,6 +18,8 @@ var propertyListResult ListResult
 // until actual pagination is implemented.
 // Returns a list of properties for a given Organization, or an error if anything goes wrong.
 func (c ClientStruct) List() (ListResult, error) {
+	var propertyListResult ListResult
+
 	httpClient := &http.Client{}
 	serviceURL := c.GetServiceURL(common.URLParams{})
 

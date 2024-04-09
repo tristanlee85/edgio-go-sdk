@@ -56,10 +56,10 @@ func (v Variable) GetSlug() string {
 type Property struct {
 	Searchable
 
-	ID        string
-	Slug      string
-	CreatedAt time.Time
-	UpdatedAt time.Time
+	ID        string    `mapstructure:"id"`
+	Slug      string    `mapstructure:"slug"`
+	CreatedAt time.Time `mapstructure:"createdAt"`
+	UpdatedAt time.Time `mapstructure:"updatedAt"`
 }
 
 // GetKey returns the Key value of the Property

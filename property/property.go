@@ -6,6 +6,11 @@ import (
 	"errors"
 )
 
+type FilterParams struct {
+	ID   string
+	Slug string
+}
+
 type ClientStruct struct {
 	*client.Client
 }

@@ -18,81 +18,62 @@ func main() {
 	}
 
 	orgClient, _ := org.NewClient(common.ClientParams{Credentials: credentials})
-	org, err := orgClient.Get(common.URLParams{Path: os.Getenv("EDGIO_ORG_ID")})
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
+	org, _ := orgClient.Get(common.URLParams{Path: os.Getenv("EDGIO_ORG_ID")})
 
 	fmt.Println("Org ID: " + org.ID)
 
-	propertyClient, err := property.NewClient(common.ClientParams{
+	propertyClient, _ := property.NewClient(common.ClientParams{
 		Credentials: credentials,
 		Config:      common.ClientConfig{OrgID: org.ID, AccessToken: orgClient.Client.AccessToken},
 	})
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
 
 	fmt.Println("FilterList")
-	properties, _ := propertyClient.FilterList(property.FilterParams{Slug: "-ca"})
+	properties, _ := propertyClient.FilterList(property.FilterParams{Slug: "another-"})
 
-	envClient, err := env.NewClient(common.ClientParams{
+	envClient, _ := env.NewClient(common.ClientParams{
 		Credentials: credentials,
 		Config:      common.ClientConfig{AccessToken: orgClient.Client.AccessToken},
 	})
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
 
-	variableClient, err := variable.NewClient(common.ClientParams{
+	variableClient, _ := variable.NewClient(common.ClientParams{
 		Credentials: credentials,
 		Config:      common.ClientConfig{AccessToken: orgClient.Client.AccessToken},
 	})
-	if err != nil {
-		fmt.Println(err)
-		return
-	}
 
-	for _, property := range properties.Items {
-		fmt.Println("Property: " + property.Slug)
+	for _, prop := range properties.Items {
+		fmt.Println("Property from FilterList: " + prop.Slug)
 
-		envs, err := envClient.FilterList(env.FilterParams{PropertyID: property.ID, Name: "prod"})
-		if err != nil {
-			fmt.Println(err)
-			return
-		}
+		envs, _ := envClient.FilterList(env.FilterParams{PropertyID: prop.ID, Name: "another"})
 
 		for _, env := range envs.Items {
-			fmt.Println("Env: " + env.Name)
+			fmt.Println("Env from FilterList: " + env.Name)
 
-			variables, err := variableClient.FilterList(variable.FilterParams{EnvID: env.ID, Key: "KEY"})
-			if err != nil {
-				fmt.Println(err)
-				return
-			}
+			variables, _ := variableClient.FilterList(variable.FilterParams{EnvID: env.ID, Key: "SOME"})
 
 			for _, variable := range variables.Items {
-				fmt.Println("Variable: " + variable.Key)
+				fmt.Println("Variable from FilterList: " + variable.Key)
 			}
 		}
+
+		fmt.Println("Property Get (by id)")
+		fmt.Println("Property ID: " + prop.ID)
+		propGetResult, _ := propertyClient.Get(property.FilterParams{ID: prop.ID})
+		fmt.Println("Property Get Result: " + propGetResult.Slug)
 	}
 
 	fmt.Println("GetByAttr")
 
-	property, _ := propertyClient.GetBySlug(property.FilterParams{Slug: "cart-ca"})
+	property, _ := propertyClient.GetBySlug(property.FilterParams{Slug: "some-property"})
 
-	fmt.Println("Property: " + property.Slug)
+	fmt.Println("Property GetBySlug Result: " + property.Slug)
 
-	stageEnv, _ := envClient.GetByName(env.FilterParams{PropertyID: property.ID, Name: "stage"})
+	stageEnv, _ := envClient.GetByName(env.FilterParams{PropertyID: property.ID, Name: "some-env"})
 
-	fmt.Println("Env: " + stageEnv.Name)
+	fmt.Println("Env GetByName Result: " + stageEnv.Name)
 
-	variable, _ := variableClient.GetByKey(variable.FilterParams{EnvID: stageEnv.ID, Key: "EXPERIAN_ADDR_KEY"})
+	variable, _ := variableClient.GetByKey(variable.FilterParams{EnvID: stageEnv.ID, Key: "SOME_ENV_VAR"})
 
-	fmt.Println("Variable: " + variable.Key + " = " + variable.Value)
+	fmt.Println("Variable GetByKey Result: " + variable.Key + " = " + variable.Value)
 
 	fmt.Println("main.go")
 }
