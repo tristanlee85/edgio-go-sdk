@@ -10,6 +10,9 @@ import (
 	"github.com/mitchellh/mapstructure"
 )
 
+// Get retrieves a property by ID
+// mandatory params: FilterParams.ID
+// returns retrieved property or nil if none was found.
 func (c ClientStruct) Get(params FilterParams) (common.Property, error) {
 	var propertyGetResult common.Property
 

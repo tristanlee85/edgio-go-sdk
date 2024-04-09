@@ -80,7 +80,15 @@ func getByAttrCheck() {
 	variable, _ := variableClient.GetByKey(variable.FilterParams{EnvID: stageEnv.ID, Key: "SOME_ENV_VAR"})
 
 	fmt.Println("Variable GetByKey Result: " + variable.Key + " = " + variable.Value)
+}
 
+func getByIdCheck() {
+	fmt.Println("GetById")
+	propertyBySlug, _ := propertyClient.GetBySlug(property.FilterParams{Slug: "some-property"})
+
+	property, _ := propertyClient.Get(property.FilterParams{ID: propertyBySlug.ID})
+
+	fmt.Println("Property GetByID Result: " + property.Slug)
 }
 
 func main() {
@@ -101,6 +109,8 @@ func main() {
 	}
 
 	getByAttrCheck()
+
+	getByIdCheck()
 
 	fmt.Println("main.go")
 }
