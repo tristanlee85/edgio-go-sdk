@@ -57,7 +57,7 @@ client, err := env.NewClient(env.ClientParams{
 envs, err := client.List("some-property-id") // [{ "ID": "some-id", "Name": "some-env-name", "LegacyAccNumber": "some-acc-number", "DefaultDomainName": "some-domain-name", "DNSDomainName": "some-dns", "CanMembersDeploy": true, "OnlyMaintainersCanDeploy": true, "HTTPRequestLogging": true, "PciCompliance": true, "CreatedAt": "2019-08-24T14:15:22Z", "UpdatedAt": "2019-08-24T14:15:22Z" }]
 ```
 
-This func list environments for a given Edgio Property. Edgio's list page size was defaulted to 100 for now, which is the highest value. The idea is to return all environments until actual pagination is implemented. Returns a list of environments for a given Property or an error if anything goes wrong.
+This func list environments for a given Edgio property. Edgio's list page size was defaulted to 100 for now, which is the highest value. The idea is to return all environments until actual pagination is implemented. Returns a list of environments for a given Property or an error if anything goes wrong.
 
 ### `env.List` Mandatory Params
 
@@ -94,6 +94,30 @@ Filters the list of environments for a given Property by the environment name, a
 ### `env.FilterList` Optional Params
 
 - `env.FilterParams.Name`: The string to be used as a environment name filter
+
+## `env.Get(params env.FilterParams) (common.Env, error)`
+
+```go
+params := common.ClientParams{
+  Credentials: common.Creds{ ... },
+  Config: common.ClientConfig{OrgID: "some-org-id"},
+}
+
+client, _ := env.NewClient(params)
+env, _ := client.Get(env.FilterParams{ ID: "some-env-id" })
+
+fmt.Println(env) // { "ID": "some-env-id", "Name": "some-env", "LegacyAccNumber": "some-acc-number", "DefaultDomainName": "some-domain-name", "DNSDomainName": "some-dns", "CanMembersDeploy": true, "OnlyMaintainersCanDeploy": true, "HTTPRequestLogging": true, "PciCompliance": true, "CreatedAt": "2019-08-24T14:15:22Z", "UpdatedAt": "2019-08-24T14:15:22Z" }
+```
+
+This func retrieves an by ID and returns it, or empty if none was found.
+
+### `env.Get` Mandatory Params
+
+- `env.FilterParams.ID`: The string to be used as ID to get the desired property
+
+### `env.Get` Optional Params & Default Values
+
+This func has no optional params.
 
 ## `env.GetByName(params FilterParams) (common.Env, error)`
 

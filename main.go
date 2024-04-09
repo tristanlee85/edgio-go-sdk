@@ -73,11 +73,11 @@ func getByAttrCheck() {
 
 	fmt.Println("Property GetBySlug Result: " + property.Slug)
 
-	stageEnv, _ := envClient.GetByName(env.FilterParams{PropertyID: property.ID, Name: "some-env"})
+	someEnv, _ := envClient.GetByName(env.FilterParams{PropertyID: property.ID, Name: "some-env"})
 
-	fmt.Println("Env GetByName Result: " + stageEnv.Name)
+	fmt.Println("Env GetByName Result: " + someEnv.Name)
 
-	variable, _ := variableClient.GetByKey(variable.FilterParams{EnvID: stageEnv.ID, Key: "SOME_ENV_VAR"})
+	variable, _ := variableClient.GetByKey(variable.FilterParams{EnvID: someEnv.ID, Key: "SOME_ENV_VAR"})
 
 	fmt.Println("Variable GetByKey Result: " + variable.Key + " = " + variable.Value)
 }
@@ -86,13 +86,13 @@ func getByIdCheck() {
 	fmt.Println("GetById")
 
 	propertyBySlug, _ := propertyClient.GetBySlug(property.FilterParams{Slug: "some-property"})
-	envByName, _ := envClient.GetByName(env.FilterParams{Name: "some-env"})
+	envByName, _ := envClient.GetByName(env.FilterParams{PropertyID: propertyBySlug.ID, Name: "some-env"})
 
 	property, _ := propertyClient.Get(property.FilterParams{ID: propertyBySlug.ID})
-	env, _ := envClient.Get(env.FilterParams{ID: envByName.ID})
+	someEnv, _ := envClient.Get(env.FilterParams{ID: envByName.ID})
 
 	fmt.Println("Property GetByID Result: " + property.Slug)
-	fmt.Println("Env GetByID Result: " + env.Name)
+	fmt.Println("Env GetByID Result: " + someEnv.Name)
 }
 
 func main() {
