@@ -8,6 +8,8 @@ import (
 	"edgio/variable"
 	"fmt"
 	"os"
+
+	_ "github.com/joho/godotenv/autoload"
 )
 
 var credentials = common.Creds{
